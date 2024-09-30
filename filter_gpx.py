@@ -4,8 +4,9 @@ import os
 from datetime import datetime
 from tqdm import tqdm  # Für die Fortschrittsanzeige
 
-# Geschwindigkeit in km/h
+# Geschwindigkeit in km/h und Distanz in Metern
 SPEED_THRESHOLD = 3
+DISTANCE_THRESHOLD = 50  # in Metern
 
 # Zähler für die Statistik
 stats = {
@@ -25,6 +26,13 @@ def get_speed(point1, point2):
         if time_diff > 0:
             return distance / time_diff
     return 0
+
+def calculate_total_distance(points):
+    """Berechnet die Gesamtdistanz in Metern zwischen GPX-Punkten"""
+    total_distance = 0
+    for i in range(len(points) - 1):
+        total_distance += points[i].distance_2d(points[i + 1])  # in Metern
+    return total_distance
 
 def filter_gpx_file(file_path, processed_dir):
     global stats
@@ -61,6 +69,12 @@ def filter_gpx_file(file_path, processed_dir):
 
             # Überprüfe, ob der Track parkiert ist (d.h. die Geschwindigkeit ist nie über dem Schwellenwert)
             if all(get_speed(segment.points[i], segment.points[i + 1]) < SPEED_THRESHOLD for i in range(len(segment.points) - 1)):
+                stats["parked_tracks"] += 1
+                return
+
+            # Gesamtdistanz berechnen
+            total_distance = calculate_total_distance(segment.points)
+            if total_distance < DISTANCE_THRESHOLD:
                 stats["parked_tracks"] += 1
                 return
 
