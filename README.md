@@ -21,4 +21,6 @@ I use this script together with my custom made gps logger: https://github.com/pi
 ```sh
   source venv/bin/activate.fish
   python filter_gpx.py
+  # ...
+  deactivate
 ```
