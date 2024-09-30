@@ -118,8 +118,8 @@ def print_statistics():
     print(f"🟢 Erfolgreich verarbeitete Tracks: {stats['processed_tracks']}")
 
 if __name__ == '__main__':
-    import_dir = './IMPORT'  # Verzeichnis mit den unprocessed GPX-Dateien
-    processed_dir = './processed'  # Zielverzeichnis für gefilterte GPX-Dateien
+    import_dir = './INPUT'  # Verzeichnis mit den unprocessed GPX-Dateien
+    processed_dir = './OUTPUT'  # Zielverzeichnis für gefilterte GPX-Dateien
 
     # Stelle sicher, dass das processed-Verzeichnis existiert
     if not os.path.exists(processed_dir):
