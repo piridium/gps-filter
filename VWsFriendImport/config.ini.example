@@ -1,0 +1,6 @@
+[vehicle]
+vin = WVWZZZ1JZXW000000
+
+[paths]
+gpx_folder = ./INPUT
+output_sql = ./OUTPUT/trackImport.sql

@@ -1,6 +1,5 @@
-IMPORT
-INPUT
-OUTPUT
-processed
+*/INPUT
+*/OUTPUT
 venv
 *.pdf
+VWsFriendImport/config.ini
