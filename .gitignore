@@ -1,3 +1,6 @@
 IMPORT
+INPUT
+OUTPUT
 processed
 venv
+*.pdf
