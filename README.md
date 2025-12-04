@@ -5,8 +5,7 @@
 ```sh
   python3 -m venv venv
   source venv/bin/activate.fish
-  pip install gpxpy
-  pip install tqdm
+  pip install -r requirements.txt
 ```
 
 ## GPX Filter
@@ -43,6 +42,7 @@ This script generates an sql file from .gpx sources ready for importing into VWs
 
 - Review `OUTPUT/trackImport.sql`
 - Copy `OUTPUT/trackImport.sql` to docker host
+- **Make Backup of VWsFriend DB (UI)**
 - Import data into postgres
 
 ```sh
